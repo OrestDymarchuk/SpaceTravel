@@ -1,16 +1,16 @@
-package space_travel.information_printer;
+package space_travel.bot;
 
 import space_travel.client.ClientCrudService;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ClientInformationService {
+public class ClientBot {
     ClientCrudService clientCrudService = new ClientCrudService();
-    InformationCenter informationCenter = new InformationCenter();
+    InformationCenterBot informationCenterBot = new InformationCenterBot();
 
     protected void clientService() {
-        ClientInformationService clientInformationService = new ClientInformationService();
+        ClientBot clientBot = new ClientBot();
         System.out.println("""
                 Please clarify your request;
                 To get information about the client by ID, press 1;
@@ -26,19 +26,19 @@ public class ClientInformationService {
                 request = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 System.err.println("Please enter a valid number.");
-                clientInformationService.clientService();
+                clientBot.clientService();
             }
 
             switch (request) {
-                case 1 -> clientInformationService.getClientByIdService();
-                case 2 -> clientInformationService.updateClientByIdService();
-                case 3 -> clientInformationService.getAllClientsService();
-                case 4 -> clientInformationService.createNewClientService();
-                case 5 -> clientInformationService.deleteClientByIdService();
-                case 0 -> informationCenter.ask();
+                case 1 -> clientBot.getClientByIdService();
+                case 2 -> clientBot.updateClientByIdService();
+                case 3 -> clientBot.getAllClientsService();
+                case 4 -> clientBot.createNewClientService();
+                case 5 -> clientBot.deleteClientByIdService();
+                case 0 -> informationCenterBot.ask();
                 default -> {
                     System.err.println("Please enter a valid number");
-                    clientInformationService.clientService();
+                    clientBot.clientService();
                 }
             }
         }
@@ -52,10 +52,10 @@ public class ClientInformationService {
                 id = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 System.err.println("Please enter a valid number.");
-                new ClientInformationService().getClientByIdService();
+                new ClientBot().getClientByIdService();
             }
             clientCrudService.getClientById(id);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 
@@ -67,18 +67,18 @@ public class ClientInformationService {
                 id = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 System.err.println("Please enter a valid number.");
-                new ClientInformationService().updateClientByIdService();
+                new ClientBot().updateClientByIdService();
             }
             System.out.println("Please enter the name.");
             String name = scanner.next();
             clientCrudService.updateClientById(id, name);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 
     private void getAllClientsService(){
         clientCrudService.getAllClients().forEach(System.out::println);
-        informationCenter.ask();
+        informationCenterBot.ask();
     }
 
     private void createNewClientService(){
@@ -86,7 +86,7 @@ public class ClientInformationService {
             System.out.println("Please enter the name.");
             String name = scanner.next();
             clientCrudService.createNewClient(name);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 
@@ -98,10 +98,10 @@ public class ClientInformationService {
                 id = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 System.err.println("Please enter a valid number.");
-                new ClientInformationService().getClientByIdService();
+                new ClientBot().getClientByIdService();
             }
             clientCrudService.deleteClient(id);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 }

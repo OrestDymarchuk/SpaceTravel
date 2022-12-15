@@ -1,15 +1,15 @@
-package space_travel.information_printer;
+package space_travel.bot;
 
 import space_travel.planet.PlanetCrudService;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PlanetInformationService {
+public class PlanetBot {
     PlanetCrudService planetCrudService = new PlanetCrudService();
-    InformationCenter informationCenter = new InformationCenter();
+    InformationCenterBot informationCenterBot = new InformationCenterBot();
     protected void planetService() {
-        PlanetInformationService planetInformationService = new PlanetInformationService();
+        PlanetBot planetBot = new PlanetBot();
         System.out.println("""
                 Please clarify your request;
                 To get information about the planet by ID, press 1;
@@ -25,19 +25,19 @@ public class PlanetInformationService {
                 request = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 System.err.println("Please enter a valid number.");
-                planetInformationService.planetService();
+                planetBot.planetService();
             }
 
             switch (request) {
-                case 1 -> planetInformationService.getPlanetByIdService();
-                case 2 -> planetInformationService.updatePlanetByIdService();
-                case 3 -> planetInformationService.getAllPlanetsService();
-                case 4 -> planetInformationService.createNewPlanetService();
-                case 5 -> planetInformationService.deletePlanetByIdService();
-                case 0 -> informationCenter.ask();
+                case 1 -> planetBot.getPlanetByIdService();
+                case 2 -> planetBot.updatePlanetByIdService();
+                case 3 -> planetBot.getAllPlanetsService();
+                case 4 -> planetBot.createNewPlanetService();
+                case 5 -> planetBot.deletePlanetByIdService();
+                case 0 -> informationCenterBot.ask();
                 default -> {
                     System.err.println("Please enter a valid number");
-                    planetInformationService.planetService();
+                    planetBot.planetService();
                 }
             }
         }
@@ -48,7 +48,7 @@ public class PlanetInformationService {
             System.out.println("Please enter the planet ID.");
             String id = scanner.next();
             planetCrudService.getPlanetById(id);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 
@@ -59,13 +59,13 @@ public class PlanetInformationService {
             System.out.println("Please enter the planet name.");
             String name = scanner.next();
             planetCrudService.updatePlanetById(id, name);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 
     private void getAllPlanetsService(){
         planetCrudService.getAllPlanets().forEach(System.out::println);
-        informationCenter.ask();
+        informationCenterBot.ask();
     }
 
     private void createNewPlanetService(){
@@ -75,7 +75,7 @@ public class PlanetInformationService {
             System.out.println("Please enter the planet name.");
             String name = scanner.next();
             planetCrudService.createNewPlanet(id, name);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 
@@ -84,7 +84,7 @@ public class PlanetInformationService {
             System.out.println("Please enter the planet ID.");
             String id = scanner.next();
             planetCrudService.deletePlanet(id);
-            informationCenter.ask();
+            informationCenterBot.ask();
         }
     }
 }
