@@ -3,9 +3,7 @@ package space_travel.database_flyway_service;
 import org.flywaydb.core.Flyway;
 import space_travel.preferences.PropertiesFileReader;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 public class DatabaseFlyWayService {
     public void initFlyWayDb() throws IOException {
