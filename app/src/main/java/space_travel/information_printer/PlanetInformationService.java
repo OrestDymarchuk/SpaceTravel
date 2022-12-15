@@ -16,7 +16,8 @@ public class PlanetInformationService {
                 To update planet's name, press 2;
                 To get information about all planets, press 3;
                 To create a new planet, press 4;
-                To delete an existent planet, press 5;""");
+                To delete an existent planet, press 5;
+                To the main menu, press 0;""");
 
         try (Scanner scanner = new Scanner(System.in)) {
             int request = 0;
@@ -33,6 +34,7 @@ public class PlanetInformationService {
                 case 3 -> planetInformationService.getAllPlanetsService();
                 case 4 -> planetInformationService.createNewPlanetService();
                 case 5 -> planetInformationService.deletePlanetByIdService();
+                case 0 -> informationCenter.ask();
                 default -> {
                     System.err.println("Please enter a valid number");
                     planetInformationService.planetService();

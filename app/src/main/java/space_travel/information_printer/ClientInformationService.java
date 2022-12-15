@@ -17,7 +17,8 @@ public class ClientInformationService {
                 To update client's name, press 2;
                 To get information about all clients, press 3;
                 To create a new client, press 4;
-                To delete an existent client, press 5;""");
+                To delete an existent client, press 5;
+                To the main menu, press 0;""");
 
         try (Scanner scanner = new Scanner(System.in)) {
             int request = 0;
@@ -34,6 +35,7 @@ public class ClientInformationService {
                 case 3 -> clientInformationService.getAllClientsService();
                 case 4 -> clientInformationService.createNewClientService();
                 case 5 -> clientInformationService.deleteClientByIdService();
+                case 0 -> informationCenter.ask();
                 default -> {
                     System.err.println("Please enter a valid number");
                     clientInformationService.clientService();
