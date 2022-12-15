@@ -43,7 +43,6 @@ public class PlanetCrudService {
                     "from Planet",
                     Planet.class
             );
-
             planets = planetQuery.list();
             return planets;
         }
