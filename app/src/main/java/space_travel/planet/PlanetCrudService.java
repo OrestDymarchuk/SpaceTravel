@@ -31,7 +31,8 @@ public class PlanetCrudService {
                 existingPlanet.setName(name);
                 session.persist(existingPlanet);
                 transaction.commit();
-                System.out.println(existingPlanet);
+                System.out.println("The planet's name with id " + id + " was updated to " + name +
+                "\n" + existingPlanet);
             }
         }
     }
