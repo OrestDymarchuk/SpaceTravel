@@ -6,8 +6,6 @@ import org.hibernate.cfg.Configuration;
 import space_travel.client.Client;
 import space_travel.planet.Planet;
 
-import java.util.List;
-
 public class HibernateUtil {
 
     private static final HibernateUtil INSTANCE;
