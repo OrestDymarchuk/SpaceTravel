@@ -9,7 +9,8 @@ public class PropertiesFileReader {
     public String getPath() throws IOException {
         InputStream inputStream = getClass()
                 .getClassLoader()
-                .getResourceAsStream("hibernate.properties");
+                .getResourceAsStream("hibernate.properties"
+                );
 
         PROPERTIES.load(inputStream);
         return PROPERTIES.getProperty("hibernate.connection.url");
