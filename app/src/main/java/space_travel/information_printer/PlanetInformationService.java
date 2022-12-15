@@ -33,6 +33,10 @@ public class PlanetInformationService {
                 case 3 -> planetInformationService.getAllPlanetsService();
                 case 4 -> planetInformationService.createNewPlanetService();
                 case 5 -> planetInformationService.deletePlanetByIdService();
+                default -> {
+                    System.err.println("Please enter a valid number");
+                    planetInformationService.planetService();
+                }
             }
         }
     }

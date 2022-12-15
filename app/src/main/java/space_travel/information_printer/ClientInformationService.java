@@ -34,6 +34,10 @@ public class ClientInformationService {
                 case 3 -> clientInformationService.getAllClientsService();
                 case 4 -> clientInformationService.createNewClientService();
                 case 5 -> clientInformationService.deleteClientByIdService();
+                default -> {
+                    System.err.println("Please enter a valid number");
+                    clientInformationService.clientService();
+                }
             }
         }
     }
