@@ -1,6 +1,7 @@
 package space_travel.database_flyway_service;
 
 import org.flywaydb.core.Flyway;
+import space_travel.bot.InformationCenterBot;
 import space_travel.preferences.PropertiesFileReader;
 
 import java.io.IOException;
@@ -13,9 +14,7 @@ public class DatabaseFlyWayService {
                 .dataSource(url,null,null)
                 .load();
         flyway.migrate();
-    }
 
-    public static void main(String[] args) throws IOException {
-        new DatabaseFlyWayService().initFlyWayDb();
+        new InformationCenterBot().startApp();
     }
 }
