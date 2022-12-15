@@ -22,17 +22,22 @@ public class ClientCrudService {
     }
 
     public void updateClientById(int id, String name) {
-        try (Session session = util.getSessionFactory().openSession()) {
-            Transaction transaction = session.beginTransaction();
-            Client existingClient = session.get(Client.class, id);
-            if (existingClient == null) {
-                System.out.println("The client with id " + id + " does not exists.");
-            } else {
-                existingClient.setName(name);
-                session.persist(existingClient);
-                transaction.commit();
-                System.out.println("The client's name with id " + id + " was updated to " + name +
-                        "\n" + existingClient);
+        if (name.length() <= 3) {
+            System.out.println("A new client cannot be created due to the restrictions," +
+                    " the name must have at least 3 characters.");
+        } else {
+            try (Session session = util.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                Client existingClient = session.get(Client.class, id);
+                if (existingClient == null) {
+                    System.out.println("The client with id " + id + " does not exists.");
+                } else {
+                    existingClient.setName(name);
+                    session.persist(existingClient);
+                    transaction.commit();
+                    System.out.println("The client's name with id " + id + " was updated to " + name +
+                            ".\n" + existingClient);
+                }
             }
         }
     }
@@ -50,7 +55,7 @@ public class ClientCrudService {
     }
 
     public void createNewClient(String name) {
-        if (name.length() < 3) {
+        if (name.length() <= 3) {
             System.out.println("A new client cannot be created due to the restrictions," +
                     " the name must have at least 2 characters.");
         } else {
@@ -60,7 +65,7 @@ public class ClientCrudService {
                 newClient.setName(name);
                 session.persist(newClient);
                 transaction.commit();
-                System.out.println(newClient);
+                System.out.println("The client with name " + name + " has been created.\n" + newClient);
             }
         }
     }
@@ -74,7 +79,7 @@ public class ClientCrudService {
             } else {
                 session.remove(client);
                 transaction.commit();
-                System.out.println("The client with id " + id + " was deleted");
+                System.out.println("The client with id " + id + " was deleted.");
             }
         }
     }

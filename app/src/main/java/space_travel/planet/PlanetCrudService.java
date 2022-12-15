@@ -26,13 +26,13 @@ public class PlanetCrudService {
             Transaction transaction = session.beginTransaction();
             Planet existingPlanet = session.get(Planet.class, id);
             if (existingPlanet == null) {
-                System.out.println("The planet with id " + id + " does not exists.");
+                System.out.println("The planet with id " + id + " wasn't found.");
             } else {
                 existingPlanet.setName(name);
                 session.persist(existingPlanet);
                 transaction.commit();
                 System.out.println("The planet's name with id " + id + " was updated to " + name +
-                "\n" + existingPlanet);
+                ".\n" + existingPlanet);
             }
         }
     }
@@ -66,7 +66,7 @@ public class PlanetCrudService {
                     newPlanet.setId(id);
                     newPlanet.setName(name);
                     session.persist(newPlanet);
-                    System.out.println(newPlanet);
+                    System.out.println("New planet " + name + " has been created.\n" + newPlanet);
                     transaction.commit();
                 }
             }
@@ -78,7 +78,7 @@ public class PlanetCrudService {
             Transaction transaction = session.beginTransaction();
             Planet planet = session.get(Planet.class, id);
             if (planet == null) {
-                System.out.println("The planet with id " + id + " does not exists.");
+                System.out.println("The planet with id " + id + " wasn't found.");
             } else {
                 session.remove(planet);
                 transaction.commit();
