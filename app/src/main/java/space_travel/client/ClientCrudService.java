@@ -7,7 +7,7 @@ import space_travel.hibernate_util.HibernateUtil;
 
 import java.util.List;
 
-public class ClientCrudService {
+public class ClientCrudService implements ClientService{
     HibernateUtil util = HibernateUtil.getInstance();
 
     public void getClientById(int id) {

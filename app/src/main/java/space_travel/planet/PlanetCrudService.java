@@ -7,7 +7,7 @@ import space_travel.hibernate_util.HibernateUtil;
 
 import java.util.List;
 
-public class PlanetCrudService {
+public class PlanetCrudService implements PlanetService{
     HibernateUtil util = HibernateUtil.getInstance();
 
     public void getPlanetById(String id) {
