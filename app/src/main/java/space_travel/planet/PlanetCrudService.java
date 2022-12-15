@@ -14,7 +14,7 @@ public class PlanetCrudService {
         try (Session session = util.getSessionFactory().openSession()) {
             Planet existingPlanet = session.get(Planet.class, id);
             if (existingPlanet == null) {
-                System.out.println("The planet " + id + " does not exists.");
+                System.out.println("The planet with id " + id + " does not exists.");
             } else {
                 System.out.println(existingPlanet);
             }
@@ -26,7 +26,7 @@ public class PlanetCrudService {
             Transaction transaction = session.beginTransaction();
             Planet existingPlanet = session.get(Planet.class, id);
             if (existingPlanet == null) {
-                System.out.println("The planet " + id + " does not exists.");
+                System.out.println("The planet with id " + id + " does not exists.");
             } else {
                 existingPlanet.setName(name);
                 session.persist(existingPlanet);
@@ -59,7 +59,7 @@ public class PlanetCrudService {
                 Transaction transaction = session.beginTransaction();
                 Planet planet = session.get(Planet.class, id);
                 if (planet != null) {
-                    System.out.println("The planet already exists.");
+                    System.out.println("The planet with id " + id + " already exists.");
                 } else {
                     Planet newPlanet = new Planet();
                     newPlanet.setId(id);
