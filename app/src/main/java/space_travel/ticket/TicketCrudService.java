@@ -88,6 +88,7 @@ public class TicketCrudService implements TicketService {
                     newTicket.setPlanetFrom(planetFrom);
                     newTicket.setPlanetTo(planetTo);
                     session.persist(newTicket);
+                    System.out.println("The new ticket has been created.\n" + newTicket);
                     transaction.commit();
                 }
             }
