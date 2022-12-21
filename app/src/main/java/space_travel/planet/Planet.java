@@ -10,4 +10,5 @@ public class Planet {
     private String id;
     @Column()
     private String name;
+
 }

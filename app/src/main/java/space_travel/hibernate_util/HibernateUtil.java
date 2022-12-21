@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import space_travel.client.Client;
 import space_travel.planet.Planet;
+import space_travel.ticket.Ticket;
 
 public class HibernateUtil {
 
@@ -20,6 +21,7 @@ public class HibernateUtil {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(Client.class)
                 .addAnnotatedClass(Planet.class)
+                .addAnnotatedClass(Ticket.class)
                 .buildSessionFactory();
     }
 

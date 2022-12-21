@@ -31,6 +31,7 @@ public class InformationCenterBot {
             switch (request) {
                 case 1 -> new ClientBot().clientService();
                 case 2 -> new PlanetBot().planetService();
+                case 3 -> new TicketBot().ticketService();
                 case 4 -> new DatabaseFlyWayService().initFlyWayDb();
                 case 0 -> System.exit(0);
                 default -> {

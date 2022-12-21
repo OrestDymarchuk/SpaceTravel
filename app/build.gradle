@@ -36,11 +36,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql
     implementation 'org.flywaydb:flyway-mysql:8.5.13'
 
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation 'com.google.code.gson:gson:2.10'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'space_travel.App'
+    mainClass = 'space_travel.Main'
 }
 
 tasks.named('test') {
